@@ -16,6 +16,7 @@ namespace ModernUiSoftware
 		private Button currentButton;
 		private Random random;
 		private int tempIndex;
+		private Form activeForm;
 
 		public MainFrm()
 		{
@@ -28,12 +29,30 @@ namespace ModernUiSoftware
 			int index = random.Next(ThemeColor.ColorList.Count);
 			while (tempIndex == index)
 			{
-				random.Next(ThemeColor.ColorList.Count);
+				index = random.Next(ThemeColor.ColorList.Count);
 			}
 			tempIndex = index;
 			string color = ThemeColor.ColorList[index];
 
 			return ColorTranslator.FromHtml(color);
+		}
+
+		private void OpenChildForm(Form childForm, object btnSender)
+		{
+			if (activeForm != null)
+			{
+				activeForm.Close();
+			}
+			ActivateButton(btnSender);
+			activeForm = childForm;
+			childForm.TopLevel = false;
+			childForm.FormBorderStyle = FormBorderStyle.None;
+			childForm.Dock = DockStyle.Fill;
+			this.panelDesktopPane.Controls.Add(childForm);
+			this.panelDesktopPane.Tag = childForm;
+			childForm.BringToFront();
+			childForm.Show();
+			lblTitle.Text = childForm.Text;
 		}
 
 		private void ActivateButton(object btnSender)
@@ -50,6 +69,10 @@ namespace ModernUiSoftware
 					currentButton.BackColor = color;
 					currentButton.ForeColor = Color.White;
 					currentButton.Font = new System.Drawing.Font("Segoe UI", 11.80F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+					panelTitleBar.BackColor = color;
+					panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
+					ThemeColor.PrimaryColor = color;
+					ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
 				}
 			}
 		}
@@ -69,32 +92,32 @@ namespace ModernUiSoftware
 
 		private void btnProducts_Click(object sender, EventArgs e)
 		{
-			ActivateButton(sender);
+			OpenChildForm(new Forms.frmProduct(), sender);
 		}
 
 		private void btnOrders_Click(object sender, EventArgs e)
 		{
-			ActivateButton(sender);
+			OpenChildForm(new Forms.frmOrder(), sender);
 		}
 
 		private void btnCustomer_Click(object sender, EventArgs e)
 		{
-			ActivateButton(sender);
+			OpenChildForm(new Forms.frmCustomer(), sender);
 		}
 
 		private void btnReporting_Click(object sender, EventArgs e)
 		{
-			ActivateButton(sender);
+			OpenChildForm(new Forms.Reporting(), sender);
 		}
 
 		private void btnNotifications_Click(object sender, EventArgs e)
 		{
-			ActivateButton(sender);
+			OpenChildForm(new Forms.frmNotification(), sender);
 		}
 
 		private void btnSetting_Click(object sender, EventArgs e)
 		{
-			ActivateButton(sender);
+			OpenChildForm(new Forms.frmSetting(), sender);
 		}
 	}
 }
