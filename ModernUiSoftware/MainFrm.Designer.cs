@@ -224,6 +224,7 @@
 			this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnMinimize.BackColor = System.Drawing.Color.Transparent;
 			this.btnMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnMinimize.FlatAppearance.BorderSize = 0;
 			this.btnMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -243,6 +244,7 @@
 			this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
 			this.btnMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnMaximize.FlatAppearance.BorderSize = 0;
 			this.btnMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -260,6 +262,7 @@
 			this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnClose.BackColor = System.Drawing.Color.Transparent;
 			this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+			this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnClose.FlatAppearance.BorderSize = 0;
 			this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkRed;
 			this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
