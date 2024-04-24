@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernUiSoftware", "ModernU
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ModernUiSoftwareSetup", "ModernUiSoftwareSetup\ModernUiSoftwareSetup.vdproj", "{B79C798E-0C25-4981-9839-757D82825A46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileLogic", "FileLogic\FileLogic.csproj", "{574DF201-9D0E-4B45-B091-A6C2A1848518}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{D8EAF4BD-2C86-47C9-8926-C31C815A6B87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B79C798E-0C25-4981-9839-757D82825A46}.Debug|Any CPU.ActiveCfg = Debug
 		{B79C798E-0C25-4981-9839-757D82825A46}.Release|Any CPU.ActiveCfg = Release
+		{574DF201-9D0E-4B45-B091-A6C2A1848518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574DF201-9D0E-4B45-B091-A6C2A1848518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574DF201-9D0E-4B45-B091-A6C2A1848518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574DF201-9D0E-4B45-B091-A6C2A1848518}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

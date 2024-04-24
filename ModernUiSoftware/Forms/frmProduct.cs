@@ -12,6 +12,8 @@ namespace ModernUiSoftware.Forms
 {
 	public partial class frmProduct : Form
 	{
+		Form activeForm;
+
 		public frmProduct()
 		{
 			InitializeComponent();
@@ -29,10 +31,47 @@ namespace ModernUiSoftware.Forms
 					btn.ForeColor = Color.White;
 					btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
 				}
+
+				if (btns.GetType() == typeof(Label))
+				{
+					Label label = (Label)btns;
+					label.ForeColor = ThemeColor.SecondaryColor;
+				}
 			}
 
-			label4.ForeColor = ThemeColor.PrimaryColor;
-			label5.ForeColor = ThemeColor.SecondaryColor;
+			panel2.BackColor = ThemeColor.PrimaryColor;
+		}
+
+		private void panel2_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+
+		private void frmProduct_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new FormsContent.frmAddProduct());
+		}
+
+		private void OpenChildForm(Form childForm)
+		{
+			if (activeForm != null)
+			{
+				activeForm.Close();
+			}
+
+			activeForm = childForm;
+			childForm.TopLevel = false;
+			childForm.FormBorderStyle = FormBorderStyle.None;
+			childForm.Dock = DockStyle.Fill;
+			panelAddProduct.Controls.Add(childForm);
+			panelAddProduct.Tag = childForm;
+			childForm.BringToFront();
+			childForm.Show();
 		}
 	}
 }

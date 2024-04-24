@@ -40,8 +40,8 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.panelTitleBar = new System.Windows.Forms.Panel();
 			this.btnMinimize = new System.Windows.Forms.Button();
-			this.btnMaximize = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
+			this.btnMaximize = new System.Windows.Forms.Button();
 			this.btnCloseChildForm = new System.Windows.Forms.Button();
 			this.lblTitle = new System.Windows.Forms.Label();
 			this.panelDesktopPane = new System.Windows.Forms.Panel();
@@ -239,24 +239,6 @@
 			this.btnMinimize.UseVisualStyleBackColor = false;
 			this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
 			// 
-			// btnMaximize
-			// 
-			this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
-			this.btnMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.btnMaximize.FlatAppearance.BorderSize = 0;
-			this.btnMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-			this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnMaximize.ForeColor = System.Drawing.SystemColors.Control;
-			this.btnMaximize.Location = new System.Drawing.Point(864, 4);
-			this.btnMaximize.Name = "btnMaximize";
-			this.btnMaximize.Size = new System.Drawing.Size(27, 24);
-			this.btnMaximize.TabIndex = 2;
-			this.btnMaximize.Text = "O";
-			this.btnMaximize.UseVisualStyleBackColor = false;
-			this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-			// 
 			// btnClose
 			// 
 			this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -275,6 +257,24 @@
 			this.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+			// 
+			// btnMaximize
+			// 
+			this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnMaximize.BackColor = System.Drawing.Color.Transparent;
+			this.btnMaximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.btnMaximize.FlatAppearance.BorderSize = 0;
+			this.btnMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+			this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnMaximize.ForeColor = System.Drawing.SystemColors.Control;
+			this.btnMaximize.Location = new System.Drawing.Point(864, 4);
+			this.btnMaximize.Name = "btnMaximize";
+			this.btnMaximize.Size = new System.Drawing.Size(27, 24);
+			this.btnMaximize.TabIndex = 2;
+			this.btnMaximize.Text = "O";
+			this.btnMaximize.UseVisualStyleBackColor = false;
+			this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
 			// 
 			// btnCloseChildForm
 			// 
@@ -331,7 +331,7 @@
 			this.Controls.Add(this.panelMenu);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new System.Drawing.Size(860, 575);
+			this.MinimumSize = new System.Drawing.Size(741, 575);
 			this.Name = "MainFrm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Modern Software Design";
