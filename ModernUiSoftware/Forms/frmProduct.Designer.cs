@@ -28,20 +28,21 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.panelAddProduct = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
-			// button1
+			// btnSearch
 			// 
-			this.button1.Location = new System.Drawing.Point(22, 12);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(89, 40);
-			this.button1.TabIndex = 6;
-			this.button1.Text = "Search";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnSearch.Location = new System.Drawing.Point(22, 12);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(89, 40);
+			this.btnSearch.TabIndex = 6;
+			this.btnSearch.Text = "Search";
+			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// btnAdd
 			// 
@@ -78,7 +79,7 @@
 			this.Controls.Add(this.panelAddProduct);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btnSearch);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Name = "frmProduct";
 			this.Text = "Products";
@@ -88,7 +89,7 @@
 		}
 
 		#endregion
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Panel panelAddProduct;

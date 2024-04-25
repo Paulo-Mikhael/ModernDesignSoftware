@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FileLogic
 {
 	public class csvCrud
 	{
 		private static string userName = Environment.UserName;
-		private static string productsPath = $@"C:/Users/{userName}/Produtos.csv";
+		private static string productsPath = $@"C:/Users/{userName}/Products.csv";
 
 		public void CreateCSV()
 		{
@@ -61,12 +63,11 @@ namespace FileLogic
 			List<string> categories = new List<string>();
 
 			try
-			{
+			{	
 				string[] lines = File.ReadAllLines(productsPath);
 
 				if (lines.Length > 0)
 				{
-
 					for (int i = 1; i < lines.Length; i++)
 					{
 						string[] item = lines[i].Split(char.Parse(","));
@@ -84,10 +85,9 @@ namespace FileLogic
 
 				return categories;
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-
-				throw;
+				throw new Exception($"Error in 'LoadCategory' method. Error: {ex.Message}");
 			}
 		}
 
@@ -121,7 +121,7 @@ namespace FileLogic
 			}
 		}
 
-		public int LastProduct()
+		public int LastProductArray()
 		{
 			try
 			{
@@ -140,6 +140,126 @@ namespace FileLogic
 			catch (Exception ex)
 			{
 				throw new Exception($"Error in 'LastProduct' method. Error: {ex.Message}");
+			}
+		}
+
+		public void NewProductCSV(string serial, string name, string category, string buy, string sell, string description)
+		{
+			try
+			{
+				VerifyData(name, category, buy, sell, serial);
+				ChangeSeparator();
+
+				buy = buy.Replace("$", "").Replace("R", "").Replace(" ", "");
+				sell = sell.Replace("$", "").Replace("R", "").Replace(" ", "");
+
+				var line = $"{serial},{name},{category},{buy},{sell},{description}";
+
+				using (StreamWriter writer = new StreamWriter(productsPath, true))
+				{
+					writer.WriteLine(line);
+
+					writer.Close();
+				}
+
+				string[] allLines = File.ReadAllLines(productsPath);
+				allLines[0] = "SERIAL, NAME, CATEGORY, BUY, SELL, DESCRIPTION";
+				File.WriteAllLines(productsPath, allLines, Encoding.UTF8);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in 'NewProductCSV' method. Error: {ex.Message}");
+			}
+		}
+
+		public void UpdateProductCSV(int line, string serial, string name, string category, string buy, string sell, string description)
+		{
+			try
+			{
+				VerifyData(name, category, buy, sell);
+				ChangeSeparator();
+
+				string[] allLines = File.ReadAllLines(productsPath);
+				allLines[line] = $"{serial},{name},{category},{buy},{sell},{description}";
+				File.WriteAllLines(productsPath, allLines, Encoding.UTF8);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in 'UpdateProductCSV' method. Error: {ex.Message}");
+			}
+		}
+
+		public void ChangeSeparator()
+		{
+			try
+			{
+				using (StreamReader reader = new StreamReader(productsPath))
+				{
+					string fileContent = reader.ReadToEnd();
+
+					string replaceSeparator = fileContent.Replace(";", ",");
+
+					reader.ReadLine();
+
+					reader.Close();
+
+					using (StreamWriter writer = new StreamWriter(productsPath))
+					{
+						writer.Write(replaceSeparator);
+
+						writer.Close();
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in 'ChangeSeparotor' method. Error : {ex.Message}"); 
+			}
+		}
+
+		private void VerifyData(string name, string category, string buy, string sell, string serial = "none")
+		{
+			if (serial != "none")
+			{
+				if (serial == "")
+				{
+					throw new Exception("The field 'Serial' cannot be empty!");
+				}
+
+				if (!int.TryParse(serial, out _))
+				{
+					throw new Exception("Insert a valid Serial number!");
+				}
+			}
+
+			if (name == "")
+			{
+				throw new Exception("The field 'Name' cannnot be empty!");
+			}
+
+			if (buy == "")
+			{
+				throw new Exception("The field 'Buy' cannnot be empty!");
+			}
+
+			if (!int.TryParse(buy.Replace("$", "").Replace("R", "").Replace(" ", ""), out _))
+			{
+				throw new Exception("Insert a valid Buy price!");
+			}
+
+			if (sell == "")
+			{
+				throw new Exception("The field 'Sell' cannnot be empty!");
+			}
+
+			if (!int.TryParse(sell.Replace("$", "").Replace("R", "").Replace(" ", ""), out _))
+			{
+				throw new Exception("Insert a valid Sell price!");
+			}
+
+			if (category == "")
+			{
+				throw new Exception("Select a Category!");
 			}
 		}
 	}

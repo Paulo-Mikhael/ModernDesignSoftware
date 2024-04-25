@@ -45,12 +45,6 @@ namespace ModernUiSoftware.Forms
 
 		}
 
-		private void btnAdd_Click(object sender, EventArgs e)
-		{
-			OpenChildForm(new FormsContent.frmAddProduct());
-			btnAdd.Enabled = false;
-		}
-
 		private void OpenChildForm(Form childForm)
 		{
 			if (activeForm != null)
@@ -66,6 +60,16 @@ namespace ModernUiSoftware.Forms
 			panelAddProduct.Tag = childForm;
 			childForm.BringToFront();
 			childForm.Show();
+		}
+
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new FormsContent.frmSearchProduct());
+		}
+
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			OpenChildForm(new FormsContent.frmAddProduct());
 		}
 	}
 }

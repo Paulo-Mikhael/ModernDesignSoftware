@@ -14,7 +14,6 @@ namespace ModernUiSoftware.FormsContent
 	public partial class frmAddProduct : Form
 	{
 		private csvCrud csv = new csvCrud();
-		private static int actualLine = 1;
 
 		public frmAddProduct()
 		{
@@ -25,45 +24,6 @@ namespace ModernUiSoftware.FormsContent
 		{
 			LoadTheme();
 			LoadCategories();
-			LoadDtgProducts();
-			LoadProduct();
-			lblLastLine.Text = Convert.ToString(csv.LastProduct());
-		}
-
-		private void LoadCategories()
-		{
-			List<string> categories = csv.LoadCategories();
-
-			foreach (var item in categories)
-			{
-				cbCategory.Items.Add(item);
-			}
-		}
-
-		private void LoadProduct()
-		{
-			List<string> product = csv.ReturnProduct(actualLine);
-
-			string serial = product[0];
-			string name = product[1];
-			string category = product[2];
-			string buy = $"$ {product[3]}";
-			string sell = $"$ {product[4]}";
-			string description = product[5];
-
-			int categoryIndex = cbCategory.Items.IndexOf(category);
-
-			tbSerial.Text = serial;
-			tbName.Text = name;
-			cbCategory.SelectedIndex = categoryIndex;
-			tbBuy.Text = buy;
-			tbSell.Text = sell;
-			tbDescription.Text = description;
-
-			lblActualLine.Text = Convert.ToString(actualLine);
-
-			int rowIndexToFocus = actualLine - 1;
-			dtgProducts.CurrentCell = dtgProducts.Rows[rowIndexToFocus].Cells[0];
 		}
 
 		private void LoadTheme()
@@ -74,12 +34,6 @@ namespace ModernUiSoftware.FormsContent
 				{
 					Label label = (Label)controls;
 					label.ForeColor = ThemeColor.SecondaryColor;
-				}
-
-				if (controls.GetType() == typeof(Panel))
-				{
-					Panel panel = (Panel)controls;
-					panel.BackColor = ThemeColor.PrimaryColor;
 				}
 
 				if (controls.GetType() == typeof(Button))
@@ -93,89 +47,33 @@ namespace ModernUiSoftware.FormsContent
 			}
 		}
 
-		private void btnLast_Click(object sender, EventArgs e)
-		{
-			actualLine = csv.LastProduct();
-			LoadProduct();
-		}
-
-		private void btnFirst_Click(object sender, EventArgs e)
-		{
-			actualLine = 1;
-			LoadProduct();
-		}
-
-		private void btnNext_Click(object sender, EventArgs e)
-		{
-			actualLine++;
-
-			if (actualLine <= csv.LastProduct())
-			{
-				LoadProduct();
-			}
-			else
-			{
-				actualLine--;
-			}
-		}
-
-		private void btnPrevious_Click(object sender, EventArgs e)
-		{
-			actualLine--;
-			
-			if (actualLine > 0)
-			{
-				LoadProduct();
-			}
-			else
-			{
-				actualLine++;
-			}
-		}
-
-		private void ClearForm()
-		{
-			tbDescription.Clear();
-			tbName.Clear();
-			tbSell.Clear();
-			tbSerial.Clear();
-			tbBuy.Clear();
-			cbCategory.SelectedIndex = -1;
-		}
-
-		private void frmAddProduct_FormClosed(object sender, FormClosedEventArgs e)
-		{
-			ClearForm();
-		}
-
-		private void LoadDtgProducts()
+		private void LoadCategories()
 		{
 			try
 			{
-				for (int i = 0; i < csv.LastProduct(); i++)
+				List<string> categories = csv.LoadCategories();
+
+				foreach (var item in categories)
 				{
-					List<string> product = csv.ReturnProduct(i + 1);
-
-					string serial = product[0];
-					string name = product[1];
-					string category = product[2];
-					string buy = $"$ {product[3]}";
-					string sell = $"$ {product[4]}";
-					string description = product[5];
-
-					dtgProducts.Rows.Add(serial, name, category, buy, sell, description);
+					cbCategory.Items.Add(item);
 				}
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Error in 'LoadDtgProducts' method. Error: {ex.Message}");
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
-		private void dtgProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+		private void btnAddProduct_Click(object sender, EventArgs e)
 		{
-			actualLine = dtgProducts.CurrentRow.Index + 1;
-			LoadProduct();
+			try
+			{
+				csv.NewProductCSV(tbSerial.Text, tbName.Text, cbCategory.Text, tbBuy.Text, tbSell.Text, tbDescription.Text);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
