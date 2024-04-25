@@ -335,6 +335,7 @@
 			this.Name = "MainFrm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Modern Software Design";
+			this.Load += new System.EventHandler(this.MainFrm_Load);
 			this.panelMenu.ResumeLayout(false);
 			this.panelLogo.ResumeLayout(false);
 			this.panelLogo.PerformLayout();

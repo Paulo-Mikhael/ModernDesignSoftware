@@ -38,13 +38,6 @@ namespace ModernUiSoftware.Forms
 					label.ForeColor = ThemeColor.SecondaryColor;
 				}
 			}
-
-			panel2.BackColor = ThemeColor.PrimaryColor;
-		}
-
-		private void panel2_Paint(object sender, PaintEventArgs e)
-		{
-
 		}
 
 		private void frmProduct_Load(object sender, EventArgs e)
@@ -55,6 +48,7 @@ namespace ModernUiSoftware.Forms
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			OpenChildForm(new FormsContent.frmAddProduct());
+			btnAdd.Enabled = false;
 		}
 
 		private void OpenChildForm(Form childForm)

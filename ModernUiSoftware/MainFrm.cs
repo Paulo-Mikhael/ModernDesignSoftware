@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FileLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace ModernUiSoftware
 {
 	public partial class MainFrm : Form
 	{
+		private csvCrud csv = new csvCrud();
 		private Button currentButton;
 		private Random random;
 		private int tempIndex;
@@ -173,7 +175,7 @@ namespace ModernUiSoftware
 			{
 				this.WindowState = FormWindowState.Normal;
 			}
-			else
+			else if (this.WindowState == FormWindowState.Normal)
 			{
 				this.WindowState = FormWindowState.Maximized;
 			}
@@ -182,6 +184,18 @@ namespace ModernUiSoftware
 		private void btnMinimize_Click(object sender, EventArgs e)
 		{
 			this.WindowState = FormWindowState.Minimized;
+		}
+
+		private void MainFrm_Load(object sender, EventArgs e)
+		{
+			try
+			{
+				csv.CreateCSV();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
