@@ -58,6 +58,7 @@
 			this.dtgBuy = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dtgSell = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.dtgDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnRemove = new System.Windows.Forms.DataGridViewImageColumn();
 			this.lblProducts = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dtgProducts)).BeginInit();
 			this.SuspendLayout();
@@ -100,6 +101,8 @@
 			this.tbSell.Name = "tbSell";
 			this.tbSell.Size = new System.Drawing.Size(65, 25);
 			this.tbSell.TabIndex = 4;
+			this.tbSell.Enter += new System.EventHandler(this.tbSell_Enter);
+			this.tbSell.Leave += new System.EventHandler(this.tbSell_Leave);
 			// 
 			// tbBuy
 			// 
@@ -107,6 +110,8 @@
 			this.tbBuy.Name = "tbBuy";
 			this.tbBuy.Size = new System.Drawing.Size(65, 25);
 			this.tbBuy.TabIndex = 3;
+			this.tbBuy.Enter += new System.EventHandler(this.tbBuy_Enter);
+			this.tbBuy.Leave += new System.EventHandler(this.tbBuy_Leave);
 			// 
 			// tbName
 			// 
@@ -319,6 +324,7 @@
 			this.dtgProducts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.dtgProducts.BackgroundColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
 			dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,18 +340,20 @@
             this.dtgCategory,
             this.dtgBuy,
             this.dtgSell,
-            this.dtgDescription});
-			this.dtgProducts.Location = new System.Drawing.Point(17, 227);
+            this.dtgDescription,
+            this.btnRemove});
+			this.dtgProducts.Location = new System.Drawing.Point(0, 227);
 			this.dtgProducts.Name = "dtgProducts";
 			this.dtgProducts.ReadOnly = true;
 			this.dtgProducts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
 			this.dtgProducts.RowHeadersVisible = false;
 			this.dtgProducts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.dtgProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-			this.dtgProducts.Size = new System.Drawing.Size(534, 110);
+			this.dtgProducts.Size = new System.Drawing.Size(560, 122);
 			this.dtgProducts.TabIndex = 0;
 			this.dtgProducts.TabStop = false;
 			this.dtgProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProducts_CellClick);
+			this.dtgProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProducts_CellContentClick);
 			this.dtgProducts.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgProducts_ColumnHeaderMouseClick);
 			// 
 			// dtgSerial
@@ -390,11 +398,20 @@
 			this.dtgDescription.ReadOnly = true;
 			this.dtgDescription.Width = 400;
 			// 
+			// btnRemove
+			// 
+			this.btnRemove.HeaderText = "";
+			this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
+			this.btnRemove.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+			this.btnRemove.Name = "btnRemove";
+			this.btnRemove.ReadOnly = true;
+			this.btnRemove.Width = 25;
+			// 
 			// lblProducts
 			// 
 			this.lblProducts.AutoSize = true;
 			this.lblProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblProducts.Location = new System.Drawing.Point(15, 204);
+			this.lblProducts.Location = new System.Drawing.Point(-1, 204);
 			this.lblProducts.Name = "lblProducts";
 			this.lblProducts.Size = new System.Drawing.Size(72, 20);
 			this.lblProducts.TabIndex = 36;
@@ -474,5 +491,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn dtgBuy;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dtgSell;
 		private System.Windows.Forms.DataGridViewTextBoxColumn dtgDescription;
+		private System.Windows.Forms.DataGridViewImageColumn btnRemove;
 	}
 }

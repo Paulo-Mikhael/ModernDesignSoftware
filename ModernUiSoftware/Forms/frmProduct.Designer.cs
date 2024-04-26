@@ -65,17 +65,18 @@
 			// 
 			// panelAddProduct
 			// 
-			this.panelAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.panelAddProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.panelAddProduct.Location = new System.Drawing.Point(22, 73);
 			this.panelAddProduct.Name = "panelAddProduct";
-			this.panelAddProduct.Size = new System.Drawing.Size(471, 506);
+			this.panelAddProduct.Size = new System.Drawing.Size(471, 376);
 			this.panelAddProduct.TabIndex = 8;
 			// 
 			// frmProduct
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.ClientSize = new System.Drawing.Size(505, 591);
+			this.ClientSize = new System.Drawing.Size(505, 461);
 			this.Controls.Add(this.panelAddProduct);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.button2);

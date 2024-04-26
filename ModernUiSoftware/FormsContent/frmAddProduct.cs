@@ -14,6 +14,7 @@ namespace ModernUiSoftware.FormsContent
 	public partial class frmAddProduct : Form
 	{
 		private csvCrud csv = new csvCrud();
+		OperatingSystem os = Environment.OSVersion;
 
 		public frmAddProduct()
 		{

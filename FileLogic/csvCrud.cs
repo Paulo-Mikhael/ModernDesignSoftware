@@ -64,8 +64,10 @@ namespace FileLogic
 			List<string> categories = new List<string>();
 
 			try
-			{	
-				string[] lines = File.ReadAllLines(productsPath);
+			{
+				List<string> allLines = AllLinesList();
+
+				string[] lines = allLines.ToArray();
 
 				if (lines.Length > 0)
 				{
@@ -148,7 +150,7 @@ namespace FileLogic
 		{
 			try
 			{
-				VerifyData(name, category, buy, sell, serial);
+				VerifyData(serial, name, category, buy, sell);
 				ChangeSeparator();
 
 				buy = buy.Replace("$", "").Replace("R", "").Replace(" ", "").Replace(",", ".");
@@ -177,7 +179,7 @@ namespace FileLogic
 		{
 			try
 			{
-				VerifyData(name, category, buy, sell);
+				VerifyData(serial, name, category, buy, sell);
 				ChangeSeparator();
 
 				buy = buy.Replace("$", "").Replace("R", "").Replace(" ", "").Replace(",", ".");
@@ -203,8 +205,6 @@ namespace FileLogic
 
 					string replaceSeparator = fileContent.Replace(";", separator);
 
-					reader.ReadLine();
-
 					reader.Close();
 
 					using (StreamWriter writer = new StreamWriter(productsPath))
@@ -221,19 +221,64 @@ namespace FileLogic
 			}
 		}
 
-		private void VerifyData(string name, string category, string buy, string sell, string serial = "none")
+		public void RemoveProductCSV(int line)
 		{
-			if (serial != "none")
+			try
 			{
-				if (serial == "")
-				{
-					throw new Exception("The field 'Serial' cannot be empty!");
-				}
+				var allLinesList = AllLinesList();
 
-				if (!int.TryParse(serial, out _))
+				allLinesList.RemoveAt(line);
+
+				using (StreamWriter writer = new StreamWriter(productsPath))
 				{
-					throw new Exception("Insert a valid Serial number!");
+					writer.Write(string.Empty);
+
+					foreach (var item in allLinesList)
+					{
+						writer.WriteLine(item);
+					}
+
+					writer.Close();
 				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in 'RemoveProductCSV' method. Error: {ex.Message}");
+			}
+		}
+
+		private List<string> AllLinesList()
+		{
+			try
+			{
+				using (StreamReader reader = new StreamReader(productsPath))
+				{
+					string allLines = reader.ReadToEnd();
+					string[] allLinesArray = allLines.Split(new[] { "\r\n" }, StringSplitOptions.None);
+					List<string> allLinesList = new List<string>(allLinesArray);
+					allLinesList.RemoveAll(el => el == "");
+
+					reader.Close();
+
+					return allLinesList;
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new Exception($"Error in 'AllLinesList' method. Error: {ex.Message}");
+			}
+		}
+
+		private void VerifyData(string serial, string name, string category, string buy, string sell)
+		{
+			if (serial == "")
+			{
+				throw new Exception("The field 'Serial' cannot be empty!");
+			}
+
+			if (!int.TryParse(serial, out _))
+			{
+				throw new Exception("Insert a valid Serial number!");
 			}
 
 			if (name == "")

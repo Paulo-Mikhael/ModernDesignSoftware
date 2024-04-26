@@ -179,6 +179,11 @@ namespace ModernUiSoftware.FormsContent
 		{
 			try
 			{
+				if (dtgProducts.RowCount > 0)
+				{
+					dtgProducts.Rows.Clear();
+				}
+
 				for (int i = 0; i < csv.LastProductArray(); i++)
 				{
 					List<string> product = csv.ReturnProduct(i + 1);
@@ -218,6 +223,24 @@ namespace ModernUiSoftware.FormsContent
 		{
 			actualLine = dtgProducts.CurrentRow.Index + 1;
 			LoadProduct();
+
+			if (dtgProducts.Columns[e.ColumnIndex].Name == "btnRemove")
+			{
+				var confirmation = MessageBox.Show($"Do you wanna remove the product '{tbName.Text}?'", "Confirmation",
+					MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (confirmation == DialogResult.Yes)
+				{
+					csv.RemoveProductCSV(actualLine);
+					MessageBox.Show("Product removed successfully");
+
+					actualLine = 1;
+
+					LoadDtgProducts();
+					ClearForm();
+					LoadProduct();
+				}
+			}
 		}
 
 		private void dtgProducts_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -234,13 +257,60 @@ namespace ModernUiSoftware.FormsContent
 			{
 				csv.UpdateProductCSV(actualLine, tbSerial.Text, tbName.Text, cbCategory.Text, tbBuy.Text, tbSell.Text, tbDescription.Text);
 				MessageBox.Show("Product actualized sucessfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+				actualLine = 1;
 				LoadDtgProducts();
 				ClearForm();
+				LoadProduct();
+
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void dtgProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void tbBuy_Leave(object sender, EventArgs e)
+		{
+			string formatText = tbBuy.Text.Replace("$", "").Replace("R", "").Replace(" ", "");
+
+			if (decimal.TryParse(formatText, out decimal formatNumber))
+			{
+				tbBuy.Text = $"$ {formatNumber}";
+			}
+			else
+			{
+				tbBuy.BackColor = Color.Salmon;
+			}
+		}
+
+		private void tbBuy_Enter(object sender, EventArgs e)
+		{
+			tbBuy.BackColor = Color.White;
+		}
+
+		private void tbSell_Leave(object sender, EventArgs e)
+		{
+			string formatText = tbSell.Text.Replace("$", "").Replace("R", "").Replace(" ", "");
+
+			if (decimal.TryParse(formatText, out decimal formatNumber))
+			{
+				tbSell.Text = $"$ {formatNumber}";
+			}
+			else
+			{
+				tbSell.BackColor = Color.Salmon;
+			}
+		}
+
+		private void tbSell_Enter(object sender, EventArgs e)
+		{
+			tbSell.BackColor = Color.White;
 		}
 	}
 }

@@ -215,7 +215,7 @@
 			this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
 			this.panelTitleBar.Location = new System.Drawing.Point(220, 0);
 			this.panelTitleBar.Name = "panelTitleBar";
-			this.panelTitleBar.Size = new System.Drawing.Size(924, 80);
+			this.panelTitleBar.Size = new System.Drawing.Size(1041, 80);
 			this.panelTitleBar.TabIndex = 1;
 			this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
 			// 
@@ -230,7 +230,7 @@
 			this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMinimize.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
 			this.btnMinimize.ForeColor = System.Drawing.SystemColors.Control;
-			this.btnMinimize.Location = new System.Drawing.Point(831, 3);
+			this.btnMinimize.Location = new System.Drawing.Point(948, 3);
 			this.btnMinimize.Name = "btnMinimize";
 			this.btnMinimize.Size = new System.Drawing.Size(27, 24);
 			this.btnMinimize.TabIndex = 2;
@@ -249,7 +249,7 @@
 			this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkRed;
 			this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnClose.ForeColor = System.Drawing.Color.White;
-			this.btnClose.Location = new System.Drawing.Point(897, 3);
+			this.btnClose.Location = new System.Drawing.Point(1014, 3);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(27, 24);
 			this.btnClose.TabIndex = 2;
@@ -268,7 +268,7 @@
 			this.btnMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
 			this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnMaximize.ForeColor = System.Drawing.SystemColors.Control;
-			this.btnMaximize.Location = new System.Drawing.Point(864, 4);
+			this.btnMaximize.Location = new System.Drawing.Point(981, 4);
 			this.btnMaximize.Name = "btnMaximize";
 			this.btnMaximize.Size = new System.Drawing.Size(27, 24);
 			this.btnMaximize.TabIndex = 2;
@@ -297,7 +297,7 @@
 			this.lblTitle.AutoSize = true;
 			this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblTitle.ForeColor = System.Drawing.SystemColors.Control;
-			this.lblTitle.Location = new System.Drawing.Point(431, 23);
+			this.lblTitle.Location = new System.Drawing.Point(489, 23);
 			this.lblTitle.Name = "lblTitle";
 			this.lblTitle.Size = new System.Drawing.Size(80, 30);
 			this.lblTitle.TabIndex = 0;
@@ -309,7 +309,7 @@
 			this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panelDesktopPane.Location = new System.Drawing.Point(220, 80);
 			this.panelDesktopPane.Name = "panelDesktopPane";
-			this.panelDesktopPane.Size = new System.Drawing.Size(924, 481);
+			this.panelDesktopPane.Size = new System.Drawing.Size(1041, 481);
 			this.panelDesktopPane.TabIndex = 2;
 			// 
 			// panelLogoImage
@@ -317,7 +317,7 @@
 			this.panelLogoImage.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.panelLogoImage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelLogoImage.BackgroundImage")));
 			this.panelLogoImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.panelLogoImage.Location = new System.Drawing.Point(309, 145);
+			this.panelLogoImage.Location = new System.Drawing.Point(367, 145);
 			this.panelLogoImage.Name = "panelLogoImage";
 			this.panelLogoImage.Size = new System.Drawing.Size(321, 116);
 			this.panelLogoImage.TabIndex = 0;
@@ -325,13 +325,13 @@
 			// MainFrm
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-			this.ClientSize = new System.Drawing.Size(1144, 561);
+			this.ClientSize = new System.Drawing.Size(1261, 561);
 			this.Controls.Add(this.panelDesktopPane);
 			this.Controls.Add(this.panelTitleBar);
 			this.Controls.Add(this.panelMenu);
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MinimumSize = new System.Drawing.Size(741, 575);
+			this.MinimumSize = new System.Drawing.Size(1277, 575);
 			this.Name = "MainFrm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Modern Software Design";
