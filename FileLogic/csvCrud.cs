@@ -15,6 +15,7 @@ namespace FileLogic
 	{
 		private static string userName = Environment.UserName;
 		private static string productsPath = $@"C:/Users/{userName}/Products.csv";
+		private static string separator = ",";
 
 		public void CreateCSV()
 		{
@@ -70,7 +71,7 @@ namespace FileLogic
 				{
 					for (int i = 1; i < lines.Length; i++)
 					{
-						string[] item = lines[i].Split(char.Parse(","));
+						string[] item = lines[i].Split(char.Parse(separator));
 
 						if (!categories.Contains(item[2]))
 						{
@@ -101,7 +102,7 @@ namespace FileLogic
 
 				if (lines.Length > 0 && actualLine > 0)
 				{
-					string[] item = lines[actualLine].Split(char.Parse(","));
+					string[] item = lines[actualLine].Split(char.Parse(separator));
 
 					for (int i = 0; i < item.Length; i++)
 					{
@@ -150,8 +151,8 @@ namespace FileLogic
 				VerifyData(name, category, buy, sell, serial);
 				ChangeSeparator();
 
-				buy = buy.Replace("$", "").Replace("R", "").Replace(" ", "");
-				sell = sell.Replace("$", "").Replace("R", "").Replace(" ", "");
+				buy = buy.Replace("$", "").Replace("R", "").Replace(" ", "").Replace(",", ".");
+				sell = sell.Replace("$", "").Replace("R", "").Replace(" ", "").Replace(",", ".");
 
 				var line = $"{serial},{name},{category},{buy},{sell},{description}";
 
@@ -163,7 +164,7 @@ namespace FileLogic
 				}
 
 				string[] allLines = File.ReadAllLines(productsPath);
-				allLines[0] = "SERIAL, NAME, CATEGORY, BUY, SELL, DESCRIPTION";
+				allLines[0] = "SERIAL,NAME,CATEGORY,BUY,SELL,DESCRIPTION";
 				File.WriteAllLines(productsPath, allLines, Encoding.UTF8);
 			}
 			catch (Exception ex)
@@ -178,6 +179,9 @@ namespace FileLogic
 			{
 				VerifyData(name, category, buy, sell);
 				ChangeSeparator();
+
+				buy = buy.Replace("$", "").Replace("R", "").Replace(" ", "").Replace(",", ".");
+				sell = sell.Replace("$", "").Replace("R", "").Replace(" ", "").Replace(",", ".");
 
 				string[] allLines = File.ReadAllLines(productsPath);
 				allLines[line] = $"{serial},{name},{category},{buy},{sell},{description}";
@@ -197,7 +201,7 @@ namespace FileLogic
 				{
 					string fileContent = reader.ReadToEnd();
 
-					string replaceSeparator = fileContent.Replace(";", ",");
+					string replaceSeparator = fileContent.Replace(";", separator);
 
 					reader.ReadLine();
 
@@ -213,7 +217,7 @@ namespace FileLogic
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Error in 'ChangeSeparotor' method. Error : {ex.Message}"); 
+				throw new Exception($"Error in 'ChangeSeparator' method. Error : {ex.Message}"); 
 			}
 		}
 
@@ -242,7 +246,7 @@ namespace FileLogic
 				throw new Exception("The field 'Buy' cannnot be empty!");
 			}
 
-			if (!int.TryParse(buy.Replace("$", "").Replace("R", "").Replace(" ", ""), out _))
+			if (!decimal.TryParse(buy.Replace("$", "").Replace("R", "").Replace(" ", ""), out _))
 			{
 				throw new Exception("Insert a valid Buy price!");
 			}
@@ -252,7 +256,7 @@ namespace FileLogic
 				throw new Exception("The field 'Sell' cannnot be empty!");
 			}
 
-			if (!int.TryParse(sell.Replace("$", "").Replace("R", "").Replace(" ", ""), out _))
+			if (!decimal.TryParse(sell.Replace("$", "").Replace("R", "").Replace(" ", ""), out _))
 			{
 				throw new Exception("Insert a valid Sell price!");
 			}

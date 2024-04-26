@@ -24,6 +24,7 @@ namespace ModernUiSoftware.FormsContent
 		{
 			LoadTheme();
 			LoadCategories();
+			tbSerial.Focus();
 		}
 
 		private void LoadTheme()
@@ -69,11 +70,65 @@ namespace ModernUiSoftware.FormsContent
 			try
 			{
 				csv.NewProductCSV(tbSerial.Text, tbName.Text, cbCategory.Text, tbBuy.Text, tbSell.Text, tbDescription.Text);
+				MessageBox.Show("Product saved successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				ClearForm();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+		}
+
+		private void tbBuy_Leave(object sender, EventArgs e)
+		{
+			string formatText = tbBuy.Text.Replace("$", "").Replace("R", "").Replace(" ", "");
+
+			if (decimal.TryParse(formatText, out decimal formatNumber))
+			{
+				tbBuy.Text = $"$ {formatNumber}";
+			}
+			else
+			{
+				tbBuy.BackColor = Color.Salmon;
+			}
+		}
+
+		private void tbBuy_Enter(object sender, EventArgs e)
+		{
+			tbBuy.BackColor = Color.White;
+		}
+
+		private void tbSell_Leave(object sender, EventArgs e)
+		{
+			string formatText = tbSell.Text.Replace("$", "").Replace("R", "").Replace(" ", "");
+
+			if (decimal.TryParse(formatText, out decimal formatNumber))
+			{
+				tbSell.Text = $"$ {formatNumber}";
+			}
+			else
+			{
+				tbSell.BackColor = Color.Salmon;
+			}
+		}
+
+		private void tbSell_Enter(object sender, EventArgs e)
+		{
+			tbSell.BackColor = Color.White;
+		}
+
+		private void ClearForm()
+		{
+			foreach (var item in this.Controls)
+			{
+				if (item.GetType() == typeof(TextBox))
+				{
+					TextBox textBox = (TextBox)item;
+					textBox.Clear();
+				}
+			}
+
+			cbCategory.SelectedIndex = -1;
 		}
 	}
 }

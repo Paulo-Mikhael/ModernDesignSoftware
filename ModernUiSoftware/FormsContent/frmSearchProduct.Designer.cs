@@ -82,7 +82,7 @@
 			this.tbSerial.Location = new System.Drawing.Point(71, 68);
 			this.tbSerial.Name = "tbSerial";
 			this.tbSerial.Size = new System.Drawing.Size(77, 25);
-			this.tbSerial.TabIndex = 29;
+			this.tbSerial.TabIndex = 1;
 			// 
 			// tbDescription
 			// 
@@ -92,28 +92,28 @@
 			this.tbDescription.Multiline = true;
 			this.tbDescription.Name = "tbDescription";
 			this.tbDescription.Size = new System.Drawing.Size(212, 61);
-			this.tbDescription.TabIndex = 30;
+			this.tbDescription.TabIndex = 6;
 			// 
 			// tbSell
 			// 
 			this.tbSell.Location = new System.Drawing.Point(173, 139);
 			this.tbSell.Name = "tbSell";
 			this.tbSell.Size = new System.Drawing.Size(65, 25);
-			this.tbSell.TabIndex = 31;
+			this.tbSell.TabIndex = 4;
 			// 
 			// tbBuy
 			// 
 			this.tbBuy.Location = new System.Drawing.Point(56, 139);
 			this.tbBuy.Name = "tbBuy";
 			this.tbBuy.Size = new System.Drawing.Size(65, 25);
-			this.tbBuy.TabIndex = 32;
+			this.tbBuy.TabIndex = 3;
 			// 
 			// tbName
 			// 
 			this.tbName.Location = new System.Drawing.Point(71, 103);
 			this.tbName.Name = "tbName";
 			this.tbName.Size = new System.Drawing.Size(166, 25);
-			this.tbName.TabIndex = 33;
+			this.tbName.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -210,18 +210,20 @@
 			this.cbCategory.Location = new System.Drawing.Point(243, 68);
 			this.cbCategory.Name = "cbCategory";
 			this.cbCategory.Size = new System.Drawing.Size(169, 25);
-			this.cbCategory.TabIndex = 35;
+			this.cbCategory.TabIndex = 5;
 			// 
 			// btnLast
 			// 
 			this.btnLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnLast.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLast.BackgroundImage")));
 			this.btnLast.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnLast.FlatAppearance.BorderSize = 0;
 			this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnLast.Location = new System.Drawing.Point(458, 16);
+			this.btnLast.Location = new System.Drawing.Point(518, 180);
 			this.btnLast.Name = "btnLast";
 			this.btnLast.Size = new System.Drawing.Size(30, 30);
 			this.btnLast.TabIndex = 34;
+			this.btnLast.TabStop = false;
 			this.btnLast.UseVisualStyleBackColor = true;
 			this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
 			// 
@@ -230,11 +232,13 @@
 			this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNext.BackgroundImage")));
 			this.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnNext.FlatAppearance.BorderSize = 0;
 			this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnNext.Location = new System.Drawing.Point(428, 16);
+			this.btnNext.Location = new System.Drawing.Point(488, 180);
 			this.btnNext.Name = "btnNext";
 			this.btnNext.Size = new System.Drawing.Size(30, 30);
 			this.btnNext.TabIndex = 34;
+			this.btnNext.TabStop = false;
 			this.btnNext.UseVisualStyleBackColor = true;
 			this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
 			// 
@@ -243,11 +247,13 @@
 			this.btnPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnPrevious.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrevious.BackgroundImage")));
 			this.btnPrevious.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnPrevious.FlatAppearance.BorderSize = 0;
 			this.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnPrevious.Location = new System.Drawing.Point(398, 16);
+			this.btnPrevious.Location = new System.Drawing.Point(458, 180);
 			this.btnPrevious.Name = "btnPrevious";
 			this.btnPrevious.Size = new System.Drawing.Size(30, 30);
 			this.btnPrevious.TabIndex = 34;
+			this.btnPrevious.TabStop = false;
 			this.btnPrevious.UseVisualStyleBackColor = true;
 			this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
 			// 
@@ -256,11 +262,13 @@
 			this.btnFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnFirst.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFirst.BackgroundImage")));
 			this.btnFirst.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnFirst.FlatAppearance.BorderSize = 0;
 			this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.btnFirst.Location = new System.Drawing.Point(368, 16);
+			this.btnFirst.Location = new System.Drawing.Point(428, 180);
 			this.btnFirst.Name = "btnFirst";
 			this.btnFirst.Size = new System.Drawing.Size(30, 30);
 			this.btnFirst.TabIndex = 34;
+			this.btnFirst.TabStop = false;
 			this.btnFirst.UseVisualStyleBackColor = true;
 			this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
 			// 
@@ -394,6 +402,7 @@
 			// 
 			// frmSearchProduct
 			// 
+			this.AcceptButton = this.btnAddProduct;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(563, 349);

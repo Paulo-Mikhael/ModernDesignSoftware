@@ -52,14 +52,14 @@
 			this.cbCategory.Location = new System.Drawing.Point(242, 65);
 			this.cbCategory.Name = "cbCategory";
 			this.cbCategory.Size = new System.Drawing.Size(169, 25);
-			this.cbCategory.TabIndex = 47;
+			this.cbCategory.TabIndex = 5;
 			// 
 			// tbSerial
 			// 
 			this.tbSerial.Location = new System.Drawing.Point(70, 65);
 			this.tbSerial.Name = "tbSerial";
 			this.tbSerial.Size = new System.Drawing.Size(77, 25);
-			this.tbSerial.TabIndex = 42;
+			this.tbSerial.TabIndex = 1;
 			// 
 			// tbDescription
 			// 
@@ -69,28 +69,32 @@
 			this.tbDescription.Multiline = true;
 			this.tbDescription.Name = "tbDescription";
 			this.tbDescription.Size = new System.Drawing.Size(212, 61);
-			this.tbDescription.TabIndex = 43;
+			this.tbDescription.TabIndex = 6;
 			// 
 			// tbSell
 			// 
 			this.tbSell.Location = new System.Drawing.Point(172, 136);
 			this.tbSell.Name = "tbSell";
 			this.tbSell.Size = new System.Drawing.Size(65, 25);
-			this.tbSell.TabIndex = 44;
+			this.tbSell.TabIndex = 4;
+			this.tbSell.Enter += new System.EventHandler(this.tbSell_Enter);
+			this.tbSell.Leave += new System.EventHandler(this.tbSell_Leave);
 			// 
 			// tbBuy
 			// 
 			this.tbBuy.Location = new System.Drawing.Point(55, 136);
 			this.tbBuy.Name = "tbBuy";
 			this.tbBuy.Size = new System.Drawing.Size(65, 25);
-			this.tbBuy.TabIndex = 45;
+			this.tbBuy.TabIndex = 3;
+			this.tbBuy.Enter += new System.EventHandler(this.tbBuy_Enter);
+			this.tbBuy.Leave += new System.EventHandler(this.tbBuy_Leave);
 			// 
 			// tbName
 			// 
 			this.tbName.Location = new System.Drawing.Point(70, 100);
 			this.tbName.Name = "tbName";
 			this.tbName.Size = new System.Drawing.Size(166, 25);
-			this.tbName.TabIndex = 46;
+			this.tbName.TabIndex = 2;
 			// 
 			// label5
 			// 
@@ -102,7 +106,7 @@
 			this.label5.Location = new System.Drawing.Point(12, 66);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(49, 20);
-			this.label5.TabIndex = 36;
+			this.label5.TabIndex = 0;
 			this.label5.Text = "Serial:";
 			// 
 			// label15
@@ -141,7 +145,7 @@
 			this.label8.Location = new System.Drawing.Point(13, 137);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(36, 20);
-			this.label8.TabIndex = 39;
+			this.label8.TabIndex = 0;
 			this.label8.Text = "Buy:";
 			// 
 			// label1
@@ -167,7 +171,7 @@
 			this.label4.Location = new System.Drawing.Point(12, 101);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(52, 20);
-			this.label4.TabIndex = 41;
+			this.label4.TabIndex = 0;
 			this.label4.Text = "Name:";
 			// 
 			// btnAddProduct
@@ -180,7 +184,7 @@
 			this.btnAddProduct.Location = new System.Drawing.Point(504, 12);
 			this.btnAddProduct.Name = "btnAddProduct";
 			this.btnAddProduct.Size = new System.Drawing.Size(42, 38);
-			this.btnAddProduct.TabIndex = 48;
+			this.btnAddProduct.TabIndex = 7;
 			this.btnAddProduct.UseVisualStyleBackColor = true;
 			this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
 			// 
@@ -191,11 +195,12 @@
 			this.label3.Location = new System.Drawing.Point(12, 21);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(97, 20);
-			this.label3.TabIndex = 49;
+			this.label3.TabIndex = 0;
 			this.label3.Text = "Add Product";
 			// 
 			// frmAddProduct
 			// 
+			this.AcceptButton = this.btnAddProduct;
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.ClientSize = new System.Drawing.Size(563, 173);
 			this.Controls.Add(this.label3);

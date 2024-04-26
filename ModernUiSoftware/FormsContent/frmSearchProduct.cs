@@ -31,6 +31,7 @@ namespace ModernUiSoftware.FormsContent
 				LoadProduct();
 				csv.ChangeSeparator();
 				lblLastLine.Text = Convert.ToString(csv.LastProductArray());
+				tbName.Focus();
 			}
 			catch (Exception ex)
 			{
@@ -64,8 +65,8 @@ namespace ModernUiSoftware.FormsContent
 				string serial = product[0];
 				string name = product[1];
 				string category = product[2];
-				string buy = $"$ {product[3]}";
-				string sell = $"$ {product[4]}";
+				string buy = $"$ {product[3].Replace(".", ",")}";
+				string sell = $"$ {product[4].Replace(".", ",")}";
 				string description = product[5];
 
 				int categoryIndex = cbCategory.Items.IndexOf(category);
@@ -113,12 +114,14 @@ namespace ModernUiSoftware.FormsContent
 		{
 			actualLine = csv.LastProductArray();
 			LoadProduct();
+			tbName.Focus();
 		}
 
 		private void btnFirst_Click(object sender, EventArgs e)
 		{
 			actualLine = 1;
 			LoadProduct();
+			tbName.Focus();
 		}
 
 		private void btnNext_Click(object sender, EventArgs e)
@@ -128,6 +131,7 @@ namespace ModernUiSoftware.FormsContent
 			if (actualLine <= csv.LastProductArray())
 			{
 				LoadProduct();
+				tbName.Focus();
 			}
 			else
 			{
@@ -142,6 +146,7 @@ namespace ModernUiSoftware.FormsContent
 			if (actualLine > 0)
 			{
 				LoadProduct();
+				tbName.Focus();
 			}
 			else
 			{
@@ -151,12 +156,17 @@ namespace ModernUiSoftware.FormsContent
 
 		private void ClearForm()
 		{
-			tbDescription.Clear();
-			tbName.Clear();
-			tbSell.Clear();
-			tbSerial.Clear();
-			tbBuy.Clear();
+			foreach (var item in this.Controls)
+			{
+				if (item.GetType() == typeof(TextBox))
+				{
+					TextBox textBox = (TextBox)item;
+					textBox.Clear();
+				}
+			}
+
 			cbCategory.SelectedIndex = -1;
+			tbSerial.Focus();
 		}
 
 		private void frmAddProduct_FormClosed(object sender, FormClosedEventArgs e)
@@ -176,16 +186,31 @@ namespace ModernUiSoftware.FormsContent
 					string serial = product[0];
 					string name = product[1];
 					string category = product[2];
-					string buy = $"$ {product[3]}";
-					string sell = $"$ {product[4]}";
+					string buy = $"$ {product[3].Replace(".", ",")}";
+					string sell = $"$ {product[4].Replace(".", ",")}";
 					string description = product[5];
 
 					dtgProducts.Rows.Add(serial, name, category, buy, sell, description);
 				}
+
+				StyleDtg();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void StyleDtg()
+		{
+			for (int i = 0; i < dtgProducts.RowCount; i += 2)
+			{
+				dtgProducts.Rows[i].Cells["dtgSerial"].Style.BackColor = Color.LightSteelBlue;
+				dtgProducts.Rows[i].Cells["dtgName"].Style.BackColor = Color.LightSteelBlue;
+				dtgProducts.Rows[i].Cells["dtgCategory"].Style.BackColor = Color.LightSteelBlue;
+				dtgProducts.Rows[i].Cells["dtgBuy"].Style.BackColor = Color.LightSteelBlue;
+				dtgProducts.Rows[i].Cells["dtgSell"].Style.BackColor = Color.LightSteelBlue;
+				dtgProducts.Rows[i].Cells["dtgDescription"].Style.BackColor = Color.LightSteelBlue;
 			}
 		}
 
@@ -208,6 +233,9 @@ namespace ModernUiSoftware.FormsContent
 			try
 			{
 				csv.UpdateProductCSV(actualLine, tbSerial.Text, tbName.Text, cbCategory.Text, tbBuy.Text, tbSell.Text, tbDescription.Text);
+				MessageBox.Show("Product actualized sucessfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				LoadDtgProducts();
+				ClearForm();
 			}
 			catch (Exception ex)
 			{
